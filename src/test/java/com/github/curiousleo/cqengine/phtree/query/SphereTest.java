@@ -24,10 +24,10 @@ class SphereTest {
    +---------+ (x)
    */
 
-  private static final TestObject A = new TestObject("A", new long[]{1, 2});
-  private static final TestObject B = new TestObject("B", new long[]{2, 2});
-  private static final TestObject C = new TestObject("C", new long[]{3, 3});
-  private static final TestObject D = new TestObject("D", new long[]{4, 1});
+  private static final TestObject A = new TestObject("A", new long[] {1, 2});
+  private static final TestObject B = new TestObject("B", new long[] {2, 2});
+  private static final TestObject C = new TestObject("C", new long[] {3, 3});
+  private static final TestObject D = new TestObject("D", new long[] {4, 1});
 
   private static final PhDistance DISTANCE = PhDistanceL.THIS;
   private static final QueryOptions EMPTY_QUERY_OPTIONS = new QueryOptions();
@@ -44,19 +44,19 @@ class SphereTest {
 
   @Test
   void new_Fails_WhenRadiusNegative() {
-    assertThrows(IllegalArgumentException.class, () ->
-        new Sphere<>(TestObject.KEY, wrap(A), -1, DISTANCE));
+    assertThrows(
+        IllegalArgumentException.class, () -> new Sphere<>(TestObject.KEY, wrap(A), -1, DISTANCE));
   }
 
   @Test
   void match_Succeeds_ExactlyWhenPhTreeRangeQueryMatches() {
-    final TestObject[] all = new TestObject[]{A, B, C, D};
+    final TestObject[] all = new TestObject[] {A, B, C, D};
     final double aToB = DISTANCE.dist(A.getKey(), B.getKey());
     final double bToD = DISTANCE.dist(B.getKey(), D.getKey());
 
-    testCase(/* radius */ 0, /* center */ A, all, /* expected */ new TestObject[]{A});
-    testCase(/* radius */ aToB / 2d, /* center */ A, all, /* expected */ new TestObject[]{A});
-    testCase(/* radius */ aToB, /* center */ A, all, /* expected */ new TestObject[]{A, B});
+    testCase(/* radius */ 0, /* center */ A, all, /* expected */ new TestObject[] {A});
+    testCase(/* radius */ aToB / 2d, /* center */ A, all, /* expected */ new TestObject[] {A});
+    testCase(/* radius */ aToB, /* center */ A, all, /* expected */ new TestObject[] {A, B});
     testCase(/* radius */ bToD, /* center */ B, all, /* expected */ all);
   }
 
@@ -70,18 +70,20 @@ class SphereTest {
       final PhTree<TestObject> phTree = PhTree.create(2);
       Arrays.asList(all).forEach(object -> phTree.put(object.getKey(), object));
 
-      final Iterable<TestObject> matches = () -> phTree.rangeQuery(radius, DISTANCE, center.getKey());
+      final Iterable<TestObject> matches =
+          () -> phTree.rangeQuery(radius, DISTANCE, center.getKey());
       assertThat(matches).containsExactlyElementsIn(Arrays.asList(expected));
     }
 
     {
       // Test query behaviour
-      final Sphere<TestObject, Point> sphere = new Sphere<>(
-          TestObject.KEY, wrap(center), radius, DISTANCE);
+      final Sphere<TestObject, Point> sphere =
+          new Sphere<>(TestObject.KEY, wrap(center), radius, DISTANCE);
 
-      final List<TestObject> matches = Arrays.stream(all)
-          .filter(testObject -> sphere.matches(testObject, EMPTY_QUERY_OPTIONS))
-          .collect(Collectors.toList());
+      final List<TestObject> matches =
+          Arrays.stream(all)
+              .filter(testObject -> sphere.matches(testObject, EMPTY_QUERY_OPTIONS))
+              .collect(Collectors.toList());
       assertThat(matches).containsExactlyElementsIn(Arrays.asList(expected));
     }
   }

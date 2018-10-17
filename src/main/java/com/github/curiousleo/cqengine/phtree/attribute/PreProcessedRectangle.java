@@ -17,7 +17,7 @@ public final class PreProcessedRectangle<O> extends SimpleAttribute<O, Rectangle
   private final Function<O, double[]> upperAttribute;
   private final PreProcessorPointF preProcessor;
 
-  public  PreProcessedRectangle(
+  public PreProcessedRectangle(
       String attributeName,
       Function<O, double[]> lowerAttribute,
       Function<O, double[]> upperAttribute,

@@ -29,25 +29,24 @@ import java.util.stream.Stream;
 
 /**
  * An index backed by a {@link PhTreeSolid}.
- * <p/>
- * Supports query types:
+ *
+ * <p>Supports query types:
+ *
  * <ul>
- * <li>{@link Equal}</li>
- * <li>{@link In}</li>
- * <li>{@link Inclusion}</li>
- * <li>{@link Intersection}</li>
+ *   <li>{@link Equal}
+ *   <li>{@link In}
+ *   <li>{@link Inclusion}
+ *   <li>{@link Intersection}
  * </ul>
  *
  * @param <O> The type of the object containing the attribute
  * @param <A> The type of the attribute on which the index is built. Must extend {@link Rectangle}
  */
-
-public final class PhTreeSolidIndex<O, A extends Rectangle>
-    extends AbstractAttributeIndex<A, O>
+public final class PhTreeSolidIndex<O, A extends Rectangle> extends AbstractAttributeIndex<A, O>
     implements OnHeapTypeIndex {
 
-  private final static int RETRIEVAL_COST = 15;
-  private final static Set<Class<? extends Query>> SUPPORTED_QUERIES =
+  private static final int RETRIEVAL_COST = 15;
+  private static final Set<Class<? extends Query>> SUPPORTED_QUERIES =
       Collections.unmodifiableSet(
           Stream.of(Equal.class, In.class, Inclusion.class, Intersection.class)
               .collect(Collectors.toSet()));
@@ -93,13 +92,15 @@ public final class PhTreeSolidIndex<O, A extends Rectangle>
     return new ResultSet<O>() {
       @Override
       public Iterator<O> iterator() {
-        final StoredResultSet<O> resultSet = phTree.get(equal.getValue().lower(), equal.getValue().upper());
+        final StoredResultSet<O> resultSet =
+            phTree.get(equal.getValue().lower(), equal.getValue().upper());
         return resultSet != null ? resultSet.iterator() : Collections.emptyIterator();
       }
 
       @Override
       public boolean contains(O object) {
-        StoredResultSet<O> resultSet = phTree.get(equal.getValue().lower(), equal.getValue().upper());
+        StoredResultSet<O> resultSet =
+            phTree.get(equal.getValue().lower(), equal.getValue().upper());
         return resultSet != null && resultSet.contains(object);
       }
 
@@ -130,7 +131,8 @@ public final class PhTreeSolidIndex<O, A extends Rectangle>
 
       @Override
       public int size() {
-        StoredResultSet<O> resultSet = phTree.get(equal.getValue().lower(), equal.getValue().upper());
+        StoredResultSet<O> resultSet =
+            phTree.get(equal.getValue().lower(), equal.getValue().upper());
         return resultSet != null ? resultSet.size() : 0;
       }
 
@@ -142,18 +144,20 @@ public final class PhTreeSolidIndex<O, A extends Rectangle>
   }
 
   private ResultSet<O> retrieveIn(In<O, A> in, QueryOptions queryOptions) {
-    final Iterable<ResultSet<O>> results = () -> new LazyIterator<ResultSet<O>>() {
-      private final Iterator<A> values = in.getValues().iterator();
+    final Iterable<ResultSet<O>> results =
+        () ->
+            new LazyIterator<ResultSet<O>>() {
+              private final Iterator<A> values = in.getValues().iterator();
 
-      @Override
-      protected ResultSet<O> computeNext() {
-        if (values.hasNext()) {
-          return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
-        } else {
-          return endOfData();
-        }
-      }
-    };
+              @Override
+              protected ResultSet<O> computeNext() {
+                if (values.hasNext()) {
+                  return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
+                } else {
+                  return endOfData();
+                }
+              }
+            };
     return deduplicateIfNecessary(results, in, getAttribute(), queryOptions, RETRIEVAL_COST);
   }
 
@@ -162,9 +166,9 @@ public final class PhTreeSolidIndex<O, A extends Rectangle>
     return new ResultSet<O>() {
       @Override
       public Iterator<O> iterator() {
-        return IteratorUtil.concatenate(phTree.queryInclude(
-            inclusion.getRectangle().lower(),
-            inclusion.getRectangle().upper()));
+        return IteratorUtil.concatenate(
+            phTree.queryInclude(
+                inclusion.getRectangle().lower(), inclusion.getRectangle().upper()));
       }
 
       @Override
@@ -214,9 +218,9 @@ public final class PhTreeSolidIndex<O, A extends Rectangle>
     return new ResultSet<O>() {
       @Override
       public Iterator<O> iterator() {
-        return IteratorUtil.concatenate(phTree.queryIntersect(
-            intersection.getRectangle().lower(),
-            intersection.getRectangle().upper()));
+        return IteratorUtil.concatenate(
+            phTree.queryIntersect(
+                intersection.getRectangle().lower(), intersection.getRectangle().upper()));
       }
 
       @Override

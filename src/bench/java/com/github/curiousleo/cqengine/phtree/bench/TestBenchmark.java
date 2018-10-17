@@ -29,7 +29,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 public class TestBenchmark {
 
-  private final static QueryOptions QUERY_OPTIONS = new QueryOptions();
+  private static final QueryOptions QUERY_OPTIONS = new QueryOptions();
   private static final Factory<StoredResultSet<TestObject>> STORED_RESULT_SET_FACTORY =
       () -> new StoredSetBasedResultSet<>(new HashSet<>());
   private static final int SIDE_LENGTH = 10_000;
@@ -98,13 +98,14 @@ public class TestBenchmark {
   }
 
   public static void main(String[] args) throws RunnerException {
-    Options options = new OptionsBuilder()
-        .include(TestBenchmark.class.getSimpleName())
-        .forks(1)
-        .warmupIterations(2)
-        .measurementIterations(2)
-        .timeUnit(TimeUnit.MILLISECONDS)
-        .build();
+    Options options =
+        new OptionsBuilder()
+            .include(TestBenchmark.class.getSimpleName())
+            .forks(1)
+            .warmupIterations(2)
+            .measurementIterations(2)
+            .timeUnit(TimeUnit.MILLISECONDS)
+            .build();
     new Runner(options).run();
   }
 }

@@ -23,20 +23,19 @@ abstract class AbstractRectangleQuery<O, A extends Rectangle> extends SimpleQuer
   }
 
   @Override
-  protected boolean matchesSimpleAttribute(SimpleAttribute<O, A> attribute, O object,
-      QueryOptions queryOptions) {
+  protected boolean matchesSimpleAttribute(
+      SimpleAttribute<O, A> attribute, O object, QueryOptions queryOptions) {
     A attributeValue = attribute.getValue(object, queryOptions);
     if (attributeValue.lower().length != getRectangle().lower().length
         || attributeValue.upper().length != getRectangle().upper().length) {
       throw new IllegalArgumentException("number of dimensions must be equal");
     }
     return matchesAttribute(attributeValue);
-
   }
 
   @Override
-  protected boolean matchesNonSimpleAttribute(Attribute<O, A> attribute, O object,
-      QueryOptions queryOptions) {
+  protected boolean matchesNonSimpleAttribute(
+      Attribute<O, A> attribute, O object, QueryOptions queryOptions) {
     Iterable<A> attributeValues = attribute.getValues(object, queryOptions);
     for (A attributeValue : attributeValues) {
       if (attributeValue.lower().length != getRectangle().lower().length

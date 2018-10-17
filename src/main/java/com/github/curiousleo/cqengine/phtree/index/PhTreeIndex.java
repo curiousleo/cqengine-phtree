@@ -29,28 +29,28 @@ import java.util.stream.Stream;
 
 /**
  * An index backed by a {@link PhTree}.
- * <p/>
- * Supports query types:
+ *
+ * <p>Supports query types:
+ *
  * <ul>
- * <li>{@link Equal}</li>
- * <li>{@link In}</li>
- * <li>{@link Cube}</li>
- * <li>{@link Sphere}</li>
+ *   <li>{@link Equal}
+ *   <li>{@link In}
+ *   <li>{@link Cube}
+ *   <li>{@link Sphere}
  * </ul>
+ *
  * </ul>
  *
  * @param <O> The type of the object containing the attribute
  * @param <A> The type of the attribute on which the index is built. Must extend {@link Point}
  */
-public final class PhTreeIndex<O, A extends Point>
-    extends AbstractAttributeIndex<A, O>
+public final class PhTreeIndex<O, A extends Point> extends AbstractAttributeIndex<A, O>
     implements OnHeapTypeIndex {
 
-  private final static int RETRIEVAL_COST = 15;
-  private final static Set<Class<? extends Query>> SUPPORTED_QUERIES =
+  private static final int RETRIEVAL_COST = 15;
+  private static final Set<Class<? extends Query>> SUPPORTED_QUERIES =
       Collections.unmodifiableSet(
-          Stream.of(Equal.class, In.class, Cube.class, Sphere.class)
-              .collect(Collectors.toSet()));
+          Stream.of(Equal.class, In.class, Cube.class, Sphere.class).collect(Collectors.toSet()));
 
   private final Factory<StoredResultSet<O>> valueSetFactory;
   private final PhTree<StoredResultSet<O>> phTree;
@@ -142,30 +142,30 @@ public final class PhTreeIndex<O, A extends Point>
   }
 
   private ResultSet<O> retrieveIn(In<O, A> in, QueryOptions queryOptions) {
-    final Iterable<ResultSet<O>> results = () -> new LazyIterator<ResultSet<O>>() {
-      private final Iterator<A> values = in.getValues().iterator();
+    final Iterable<ResultSet<O>> results =
+        () ->
+            new LazyIterator<ResultSet<O>>() {
+              private final Iterator<A> values = in.getValues().iterator();
 
-      @Override
-      protected ResultSet<O> computeNext() {
-        if (values.hasNext()) {
-          return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
-        } else {
-          return endOfData();
-        }
-      }
-    };
+              @Override
+              protected ResultSet<O> computeNext() {
+                if (values.hasNext()) {
+                  return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
+                } else {
+                  return endOfData();
+                }
+              }
+            };
     return deduplicateIfNecessary(results, in, getAttribute(), queryOptions, RETRIEVAL_COST);
   }
 
-  private ResultSet<O> retrieveSphere(
-      final Sphere<O, A> sphere, final QueryOptions queryOptions) {
+  private ResultSet<O> retrieveSphere(final Sphere<O, A> sphere, final QueryOptions queryOptions) {
     return new ResultSet<O>() {
       @Override
       public Iterator<O> iterator() {
-        return IteratorUtil.concatenate(phTree.rangeQuery(
-            sphere.getRadius(),
-            sphere.getDistance(),
-            sphere.getCenter().point()));
+        return IteratorUtil.concatenate(
+            phTree.rangeQuery(
+                sphere.getRadius(), sphere.getDistance(), sphere.getCenter().point()));
       }
 
       @Override
@@ -210,13 +210,11 @@ public final class PhTreeIndex<O, A extends Point>
     };
   }
 
-  private ResultSet<O> retrieveHyperCube(
-      Cube<O, A> cube, QueryOptions queryOptions) {
+  private ResultSet<O> retrieveHyperCube(Cube<O, A> cube, QueryOptions queryOptions) {
     return new ResultSet<O>() {
       @Override
       public Iterator<O> iterator() {
-        return IteratorUtil.concatenate(phTree.query(
-            cube.getMin().point(), cube.getMax().point()));
+        return IteratorUtil.concatenate(phTree.query(cube.getMin().point(), cube.getMax().point()));
       }
 
       @Override

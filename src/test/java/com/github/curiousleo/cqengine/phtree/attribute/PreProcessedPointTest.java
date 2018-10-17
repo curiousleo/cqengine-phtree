@@ -12,10 +12,10 @@ class PreProcessedPointTest {
   @Test
   void test() {
     final IEEE ieee = new IEEE();
-    final double[] pre = new double[]{1d, 2d};
+    final double[] pre = new double[] {1d, 2d};
     final Object[] post = {ieee.pre(pre[0]), ieee.pre(pre[1])};
-    final PreProcessedPoint<Object> preProcessedPoint = new PreProcessedPoint<>(
-        "testAttribute", __ -> pre, ieee, Object.class);
+    final PreProcessedPoint<Object> preProcessedPoint =
+        new PreProcessedPoint<>("testAttribute", __ -> pre, ieee, Object.class);
     final Point postPoint = preProcessedPoint.getValue(new Object(), new QueryOptions());
 
     assertThat(postPoint.point()).asList().containsExactly(post);

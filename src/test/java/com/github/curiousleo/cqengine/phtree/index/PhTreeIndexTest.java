@@ -3,8 +3,8 @@ package com.github.curiousleo.cqengine.phtree.index;
 import static com.google.common.truth.Truth.assertThat;
 
 import ch.ethz.globis.phtree.PhTree;
-import com.github.curiousleo.cqengine.phtree.query.Cube;
 import com.github.curiousleo.cqengine.phtree.common.Point;
+import com.github.curiousleo.cqengine.phtree.query.Cube;
 import com.github.curiousleo.cqengine.phtree.testing.TestObject;
 import com.googlecode.cqengine.ConcurrentIndexedCollection;
 import com.googlecode.cqengine.IndexedCollection;
@@ -25,16 +25,15 @@ class PhTreeIndexTest {
   private static final Factory<StoredResultSet<TestObject>> STORED_RESULT_SET_FACTORY =
       () -> new StoredSetBasedResultSet<>(new HashSet<>());
 
-  private static final TestObject A = new TestObject("A", new long[]{1, 1});
+  private static final TestObject A = new TestObject("A", new long[] {1, 1});
   private static final CollectionWrappingObjectStore<TestObject> OBJECT_STORE_CONTAINING_A =
-      new CollectionWrappingObjectStore<>(
-          Stream.of(A).collect(Collectors.toList()));
+      new CollectionWrappingObjectStore<>(Stream.of(A).collect(Collectors.toList()));
 
   @Test
   void testIndex() {
     final Cube<TestObject, Point> cube = new Cube<>(TestObject.KEY, A::getKey, A::getKey);
-    final PhTreeIndex<TestObject, Point> phTreeIndex = new PhTreeIndex<>(
-        TestObject.KEY, STORED_RESULT_SET_FACTORY, PhTree.create(DIMENSIONS));
+    final PhTreeIndex<TestObject, Point> phTreeIndex =
+        new PhTreeIndex<>(TestObject.KEY, STORED_RESULT_SET_FACTORY, PhTree.create(DIMENSIONS));
     phTreeIndex.init(OBJECT_STORE_CONTAINING_A, QUERY_OPTIONS);
 
     assertThat(phTreeIndex.retrieve(cube, QUERY_OPTIONS)).containsExactly(A);

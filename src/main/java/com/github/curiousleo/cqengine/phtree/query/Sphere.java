@@ -24,15 +24,15 @@ public final class Sphere<O, A extends Point> extends SimpleQuery<O, A> {
   }
 
   @Override
-  protected boolean matchesSimpleAttribute(SimpleAttribute<O, A> attribute, O object,
-      QueryOptions queryOptions) {
+  protected boolean matchesSimpleAttribute(
+      SimpleAttribute<O, A> attribute, O object, QueryOptions queryOptions) {
     A attributeValue = attribute.getValue(object, queryOptions);
     return isWithinRadius(attributeValue);
   }
 
   @Override
-  protected boolean matchesNonSimpleAttribute(Attribute<O, A> attribute, O object,
-      QueryOptions queryOptions) {
+  protected boolean matchesNonSimpleAttribute(
+      Attribute<O, A> attribute, O object, QueryOptions queryOptions) {
     Iterable<A> attributeValues = attribute.getValues(object, queryOptions);
     for (A attributeValue : attributeValues) {
       if (isWithinRadius(attributeValue)) {

@@ -23,10 +23,10 @@ class CubeTest {
    +---------+ (x)
    */
 
-  private static final TestObject A = new TestObject("A", new long[]{1, 1});
-  private static final TestObject B = new TestObject("B", new long[]{1, 4});
-  private static final TestObject C = new TestObject("C", new long[]{2, 2});
-  private static final TestObject D = new TestObject("D", new long[]{3, 3});
+  private static final TestObject A = new TestObject("A", new long[] {1, 1});
+  private static final TestObject B = new TestObject("B", new long[] {1, 4});
+  private static final TestObject C = new TestObject("C", new long[] {2, 2});
+  private static final TestObject D = new TestObject("D", new long[] {3, 3});
 
   private static final QueryOptions EMPTY_QUERY_OPTIONS = new QueryOptions();
 
@@ -43,29 +43,31 @@ class CubeTest {
   @Test
   void new_Throws_WhenMinAndMaxHaveDifferentDimensions() {
     long[] max1d = {1};
-    assertThrows(IllegalArgumentException.class, () ->
-        new Cube<>(TestObject.KEY, wrap(A), () -> max1d));
+    assertThrows(
+        IllegalArgumentException.class, () -> new Cube<>(TestObject.KEY, wrap(A), () -> max1d));
   }
 
   @Test
   void new_Throws_WhenMinNotSmallerThanMax() {
-    assertThrows(IllegalArgumentException.class, () ->
-        new Cube<>(TestObject.KEY, wrap(C), wrap(A)));
+    assertThrows(
+        IllegalArgumentException.class, () -> new Cube<>(TestObject.KEY, wrap(C), wrap(A)));
   }
 
   @Test
   void match_Succeeds_ExactlyWhenPhTreeQueryMatches() {
-    final TestObject[] all = new TestObject[]{A, B, C, D};
-    testCase(/* min */ A, /* max */ A, all, /* expected */ new TestObject[]{A});
-    testCase(/* min */ A, /* max */ B, all, /* expected */ new TestObject[]{A, B});
-    testCase(/* min */ A, /* max */ C, all, /* expected */ new TestObject[]{A, C});
-    testCase(/* min */ A, /* max */ D, all, /* expected */ new TestObject[]{A, C, D});
-    testCase(/* min */ C, /* max */ D, all, /* expected */ new TestObject[]{C, D});
+    final TestObject[] all = new TestObject[] {A, B, C, D};
+    testCase(/* min */ A, /* max */ A, all, /* expected */ new TestObject[] {A});
+    testCase(/* min */ A, /* max */ B, all, /* expected */ new TestObject[] {A, B});
+    testCase(/* min */ A, /* max */ C, all, /* expected */ new TestObject[] {A, C});
+    testCase(/* min */ A, /* max */ D, all, /* expected */ new TestObject[] {A, C, D});
+    testCase(/* min */ C, /* max */ D, all, /* expected */ new TestObject[] {C, D});
 
     // Test empty result set.
     testCase(
-        /* min */ A, /* max */ C,
-        /* all */ new TestObject[]{B, D}, /* expected */ new TestObject[]{});
+        /* min */ A, /* max */
+        C,
+        /* all */ new TestObject[] {B, D}, /* expected */
+        new TestObject[] {});
   }
 
   private void testCase(
@@ -84,12 +86,12 @@ class CubeTest {
 
     {
       // Test query behaviour
-      final Cube<TestObject, Point> cube = new Cube<>(
-          TestObject.KEY, wrap(min), wrap(max));
+      final Cube<TestObject, Point> cube = new Cube<>(TestObject.KEY, wrap(min), wrap(max));
 
-      final List<TestObject> matches = Arrays.stream(all)
-          .filter(testObject -> cube.matches(testObject, EMPTY_QUERY_OPTIONS))
-          .collect(Collectors.toList());
+      final List<TestObject> matches =
+          Arrays.stream(all)
+              .filter(testObject -> cube.matches(testObject, EMPTY_QUERY_OPTIONS))
+              .collect(Collectors.toList());
       assertThat(matches).containsExactlyElementsIn(Arrays.asList(expected));
     }
   }
