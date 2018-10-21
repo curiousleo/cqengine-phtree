@@ -1,6 +1,5 @@
 # cqengine-phtree
 
-https://api.travis-ci.org/curiousleo/cqengine-phtree.svg?branch=master
 [![Build Status](https://api.travis-ci.org/curiousleo/cqengine-phtree.svg?branch=master)](https://travis-ci.org/curiousleo/cqengine-phtree)
 
 [PhTree](https://github.com/tzaeschke/phtree) indices for [CQEngine](https://github.com/npgall/cqengine).
