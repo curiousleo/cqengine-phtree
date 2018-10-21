@@ -1,6 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 
-JUNIT_JUPITER_VERSION = "5.3.1"
+# Build dependencies
 
 maven_jar(
     name = "com_googlecode_cqengine",
@@ -23,18 +23,13 @@ maven_jar(
     sha1_src = "a7686af548d4f9291f3e9e842f292b822aa2522e",
 )
 
+# Test dependencies
+
 maven_jar(
     name = "junit_junit4",
     artifact = "junit:junit:4.12",
     sha1 = "2973d150c0dc1fefe998f834810d68f278ea58ec",
     sha1_src = "a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa",
-)
-
-maven_jar(
-    name = "org_apiguardian_api",
-    artifact = "org.apiguardian:apiguardian-api:1.0.0",
-    sha1 = "3ef5276905e36f4d8055fe3cb0bdcc7503ffc85d",
-    sha1_src = "777508fa9f3e03cafb3c1fb2eba3dca317f4b1ee",
 )
 
 maven_jar(
