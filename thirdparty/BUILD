@@ -37,11 +37,11 @@ genrule(
 
 java_import(
     name = "java_format_import",
-    jars = [ "@google_java_format_jar//file" ],
+    jars = ["@google_java_format_jar//file"],
 )
 
 java_binary(
     name = "java_format",
-    runtime_deps = [":java_format_import"],
     main_class = "com.google.googlejavaformat.java.Main",
+    runtime_deps = [":java_format_import"],
 )
