@@ -1,0 +1,13 @@
+dist: trusty
+sudo: required
+jdk:
+  - openjdk8
+before_install:
+   - wget 'https://github.com/bazelbuild/bazel/releases/download/0.18.0/bazel_0.18.0-linux-x86_64.deb'
+   - sudo dpkg -i bazel_0.18.0-linux-x86_64.deb
+script:
+  - bash tools/check-bazel.sh
+  - bash tools/check-java.sh
+  - bazel build //...
+  - bazel test //...
+

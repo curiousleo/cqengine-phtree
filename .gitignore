@@ -1,0 +1,7 @@
+/.ijwb
+/src/bench/bench.iml
+/src/bench/target
+/bazel-*
+/tools/bazel
+
+.DS_Store
