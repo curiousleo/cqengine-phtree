@@ -2,6 +2,7 @@ package(default_visibility = ["//visibility:public"])
 
 java_test(
     name = "query",
+    size = "small",
     srcs = glob(["*.java"]),
     deps = [
         "//java/com/github/curiousleo/cqengine/phtree/common",

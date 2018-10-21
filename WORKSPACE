@@ -12,8 +12,8 @@ maven_jar(
 maven_jar(
     name = "com_googlecode_concurrent_trees",
     artifact = "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
-    sha1 = "bb73d6730d133596e43ed95adfba3705276ab47c",
-    sha1_src = "33aa3172c5352ff975cf4b781b6f86e672377b96",
+    sha1 = "9b647240522ab67c003de9b6702ca81ac0c15efc",
+    sha1_src = "4c2e816b8fa6c525c1cb235c840dfb6b0a320db4",
 )
 
 maven_jar(
@@ -95,10 +95,17 @@ maven_jar(
 # Formatting
 
 http_file(
-    name = "buildifier_exe",
+    name = "buildifier_darwin",
     executable = True,
     sha256 = "66a569152bf59a527000941758a25f1dd03d6e26302d7982fd8aee25e552a10c",
     urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier.osx"],
+)
+
+http_file(
+    name = "buildifier_linux",
+    executable = True,
+    sha256 = "1cf35c463944003ceb3c3716d7fc489d3d70625e34a8127dfd8b272afad7e0fd",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier"],
 )
 
 http_file(
