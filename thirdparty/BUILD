@@ -31,7 +31,7 @@ genrule(
     name = "buildifier",
     srcs = select({
         "@bazel_tools//src/conditions:darwin": ["@buildifier_darwin//file"],
-        "@bazel_tools//src/conditions:linux_aarch64": ["@buildifier_linux//file"],
+        "//conditions:default": ["@buildifier_linux//file"],
     }),
     outs = ["buildifier.bin"],
     cmd = "cp $(SRCS) $@",
