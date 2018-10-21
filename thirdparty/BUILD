@@ -49,8 +49,8 @@ java_binary(
 java_plugin(
     name = "jmh_plugin",
     testonly = True,
-    visibility = ["//visibility:private"],
     processor_class = "org.openjdk.jmh.generators.BenchmarkProcessor",
+    visibility = ["//visibility:private"],
     deps = [
         "@org_openjdk_jmh_core//jar",
         "@org_openjdk_jmh_generator_annprocess//jar",
@@ -68,5 +68,5 @@ java_library(
     ],
     runtime_deps = [
         "@org_apache_commons_math3//jar",
-    ]
+    ],
 )

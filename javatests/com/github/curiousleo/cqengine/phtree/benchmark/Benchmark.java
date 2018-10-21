@@ -1,4 +1,4 @@
-package com.github.curiousleo.cqengine.phtree.bench;
+package com.github.curiousleo.cqengine.phtree.benchmark;
 
 import ch.ethz.globis.phtree.PhTree;
 import com.github.curiousleo.cqengine.phtree.common.Point;

@@ -86,8 +86,8 @@ maven_jar(
 )
 
 maven_jar(
-  name = "org_apache_commons_math3",
-  artifact = "org.apache.commons:commons-math3:3.6.1",
+    name = "org_apache_commons_math3",
+    artifact = "org.apache.commons:commons-math3:3.6.1",
     sha1 = "e4ba98f1d4b3c80ec46392f25e094a6a2e58fcbf",
     sha1_src = "8fab23986ea8886af34818daf32a718e81dc98ba",
 )

@@ -1,4 +1,4 @@
-package com.github.curiousleo.cqengine.phtree.bench;
+package com.github.curiousleo.cqengine.phtree.benchmark;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

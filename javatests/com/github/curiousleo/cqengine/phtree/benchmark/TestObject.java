@@ -1,4 +1,4 @@
-package com.github.curiousleo.cqengine.phtree.bench;
+package com.github.curiousleo.cqengine.phtree.benchmark;
 
 import com.github.curiousleo.cqengine.phtree.common.Point;
 import com.googlecode.cqengine.attribute.Attribute;
@@ -6,7 +6,6 @@ import com.googlecode.cqengine.attribute.SimpleAttribute;
 import com.googlecode.cqengine.query.option.QueryOptions;
 
 public final class TestObject {
-
   public static final Attribute<TestObject, Point> KEY =
       new SimpleAttribute<TestObject, Point>("key") {
         @Override
