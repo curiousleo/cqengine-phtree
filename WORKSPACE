@@ -47,8 +47,24 @@ maven_jar(
 )
 
 maven_jar(
-  name = "com_google_guava",
-  artifact = "com.google.guava:guava:26.0-jre",
+    name = "com_google_guava",
+    artifact = "com.google.guava:guava:26.0-jre",
     sha1 = "6a806eff209f36f635f943e16d97491f00f6bfab",
     sha1_src = "2e35b51c759ae1a6edbb967b65c525105536d382",
+)
+
+# Formatting
+
+http_file(
+    name = "buildifier_exe",
+    executable = True,
+    sha256 = "66a569152bf59a527000941758a25f1dd03d6e26302d7982fd8aee25e552a10c",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier.osx"],
+)
+
+http_file(
+    name = "google_java_format_jar",
+    sha256 = "73faf7c9b95bffd72933fa24f23760a6b1d18499151cb39a81cda591ceb7a5f4",
+    downloaded_file_path = "google-java-format.jar",
+    urls = ["https://github.com/google/google-java-format/releases/download/google-java-format-1.6/google-java-format-1.6-all-deps.jar"],
 )

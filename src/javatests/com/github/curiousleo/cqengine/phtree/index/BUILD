@@ -5,8 +5,8 @@ java_test(
     srcs = glob(["*.java"]),
     deps = [
         "//src/java/com/github/curiousleo/cqengine/phtree/common",
-        "//src/java/com/github/curiousleo/cqengine/phtree/query",
         "//src/java/com/github/curiousleo/cqengine/phtree/index",
+        "//src/java/com/github/curiousleo/cqengine/phtree/query",
         "//src/javatests/com/github/curiousleo/cqengine/phtree/testing",
         "//thirdparty:concurrent_trees",
         "//thirdparty:cqengine",

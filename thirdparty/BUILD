@@ -26,3 +26,22 @@ java_library(
         "@org_hamcrest_core//jar",
     ],
 )
+
+genrule(
+    name = "buildifier",
+    srcs = ["@buildifier_exe//file"],
+    outs = ["buildifier.exe"],
+    cmd = "cp $(SRCS) $@",
+    executable = True,
+)
+
+java_import(
+    name = "java_format_import",
+    jars = [ "@google_java_format_jar//file" ],
+)
+
+java_binary(
+    name = "java_format",
+    runtime_deps = [":java_format_import"],
+    main_class = "com.google.googlejavaformat.java.Main",
+)

@@ -147,6 +147,7 @@ public final class PhTreeSolidIndex<O, A extends Rectangle> extends AbstractAttr
         () ->
             new Iterator<ResultSet<O>>() {
               private final Iterator<A> values = in.getValues().iterator();
+
               @Override
               public boolean hasNext() {
                 return values.hasNext();
@@ -155,7 +156,7 @@ public final class PhTreeSolidIndex<O, A extends Rectangle> extends AbstractAttr
               @Override
               public ResultSet<O> next() {
 
-                  return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
+                return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
               }
             };
     return deduplicateIfNecessary(results, in, getAttribute(), queryOptions, RETRIEVAL_COST);

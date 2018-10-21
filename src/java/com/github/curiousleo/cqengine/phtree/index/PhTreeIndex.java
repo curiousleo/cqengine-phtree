@@ -141,19 +141,21 @@ public final class PhTreeIndex<O, A extends Point> extends AbstractAttributeInde
   }
 
   private ResultSet<O> retrieveIn(In<O, A> in, QueryOptions queryOptions) {
-    Iterable<ResultSet<O>> results = () -> new Iterator<ResultSet<O>>() {
-      private final Iterator<A> values = in.getValues().iterator();
+    Iterable<ResultSet<O>> results =
+        () ->
+            new Iterator<ResultSet<O>>() {
+              private final Iterator<A> values = in.getValues().iterator();
 
-      @Override
-      public boolean hasNext() {
-        return values.hasNext();
-      }
+              @Override
+              public boolean hasNext() {
+                return values.hasNext();
+              }
 
-      @Override
-      public ResultSet<O> next() {
-        return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
-      }
-    };
+              @Override
+              public ResultSet<O> next() {
+                return retrieveEqual(new Equal<>(in.getAttribute(), values.next()), queryOptions);
+              }
+            };
     return deduplicateIfNecessary(results, in, getAttribute(), queryOptions, RETRIEVAL_COST);
   }
 
