@@ -3,7 +3,7 @@ sudo: required
 jdk:
   - openjdk8
 before_install:
-   - wget 'https://github.com/bazelbuild/bazel/releases/download/0.18.0/bazel_0.7.0-linux-x86_64.deb' --output bazel.deb
+   - wget 'https://github.com/bazelbuild/bazel/releases/download/0.18.0/bazel_0.18.0-linux-x86_64.deb' --output bazel.deb
    - chmod +x bazel.deb
    - sudo dpkg --install bazel.deb
 script:
