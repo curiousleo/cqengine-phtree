@@ -1,6 +1,6 @@
-/.idea
-/cqengine-phtree-index.iml
-/target
+/.ijwb
 /src/bench/bench.iml
 /src/bench/target
 /bazel-*
+
+.DS_Store
