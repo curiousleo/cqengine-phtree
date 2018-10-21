@@ -4,8 +4,8 @@ java_test(
     name = "attribute",
     srcs = glob(["*.java"]),
     deps = [
-        "//src/java/com/github/curiousleo/cqengine/phtree/attribute",
-        "//src/java/com/github/curiousleo/cqengine/phtree/common",
+        "//java/com/github/curiousleo/cqengine/phtree/attribute",
+        "//java/com/github/curiousleo/cqengine/phtree/common",
         "//thirdparty:cqengine",
         "//thirdparty:phtree",
         "//thirdparty:testing",

@@ -4,7 +4,7 @@ java_library(
     name = "query",
     srcs = glob(["*.java"]),
     deps = [
-        "//src/java/com/github/curiousleo/cqengine/phtree/common",
+        "//java/com/github/curiousleo/cqengine/phtree/common",
         "//thirdparty:cqengine",
         "//thirdparty:phtree",
     ],
