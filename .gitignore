@@ -3,3 +3,4 @@
 /target
 /src/bench/bench.iml
 /src/bench/target
+/bazel-*
