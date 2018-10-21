@@ -45,3 +45,28 @@ java_binary(
     main_class = "com.google.googlejavaformat.java.Main",
     runtime_deps = [":java_format_import"],
 )
+
+java_plugin(
+    name = "jmh_plugin",
+    testonly = True,
+    visibility = ["//visibility:private"],
+    processor_class = "org.openjdk.jmh.generators.BenchmarkProcessor",
+    deps = [
+        "@org_openjdk_jmh_core//jar",
+        "@org_openjdk_jmh_generator_annprocess//jar",
+        "@org_openjdk_jmh_generator_bytecode//jar",
+        "@org_openjdk_jmh_generator_reflection//jar",
+    ],
+)
+
+java_library(
+    name = "jmh",
+    testonly = True,
+    exported_plugins = [":jmh_plugin"],
+    exports = [
+        "@org_openjdk_jmh_core//jar",
+    ],
+    runtime_deps = [
+        "@org_apache_commons_math3//jar",
+    ]
+)

@@ -16,7 +16,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.AuxCounters;
 import org.openjdk.jmh.annotations.AuxCounters.Type;
-import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
@@ -27,7 +26,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-public class TestBenchmark {
+public class Benchmark {
 
   private static final QueryOptions QUERY_OPTIONS = new QueryOptions();
   private static final Factory<StoredResultSet<TestObject>> STORED_RESULT_SET_FACTORY =
@@ -79,7 +78,7 @@ public class TestBenchmark {
     }
   }
 
-  @Benchmark
+  @org.openjdk.jmh.annotations.Benchmark
   public void testWithoutIndex(Context context, Blackhole blackhole) {
     for (TestObject testObject : context.objects) {
       if (context.cube.matches(testObject, QUERY_OPTIONS)) {
@@ -89,7 +88,7 @@ public class TestBenchmark {
     }
   }
 
-  @Benchmark
+  @org.openjdk.jmh.annotations.Benchmark
   public void testWithIndex(Context context, Blackhole blackhole) {
     for (TestObject testObject : context.objectsIndexed.retrieve(context.cube, QUERY_OPTIONS)) {
       context.retrieved++;
@@ -100,7 +99,7 @@ public class TestBenchmark {
   public static void main(String[] args) throws RunnerException {
     Options options =
         new OptionsBuilder()
-            .include(TestBenchmark.class.getSimpleName())
+            .include(Benchmark.class.getSimpleName())
             .forks(1)
             .warmupIterations(2)
             .measurementIterations(2)
