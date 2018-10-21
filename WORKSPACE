@@ -95,10 +95,17 @@ maven_jar(
 # Formatting
 
 http_file(
-    name = "buildifier_exe",
+    name = "buildifier_darwin",
     executable = True,
     sha256 = "66a569152bf59a527000941758a25f1dd03d6e26302d7982fd8aee25e552a10c",
     urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier.osx"],
+)
+
+http_file(
+    name = "buildifier_linux",
+    executable = True,
+    sha256 = "1cf35c463944003ceb3c3716d7fc489d3d70625e34a8127dfd8b272afad7e0fd",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier"],
 )
 
 http_file(

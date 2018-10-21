@@ -29,8 +29,11 @@ java_library(
 
 genrule(
     name = "buildifier",
-    srcs = ["@buildifier_exe//file"],
-    outs = ["buildifier.exe"],
+    srcs = select({
+        "@bazel_tools//src/conditions:darwin": ["@buildifier_darwin//file"],
+        "@bazel_tools//src/conditions:linux_aarch64": ["@buildifier_linux//file"],
+    }),
+    outs = ["buildifier.bin"],
     cmd = "cp $(SRCS) $@",
     executable = True,
 )
