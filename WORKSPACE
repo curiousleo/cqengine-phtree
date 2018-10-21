@@ -12,8 +12,8 @@ maven_jar(
 maven_jar(
     name = "com_googlecode_concurrent_trees",
     artifact = "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
-    sha1 = "bb73d6730d133596e43ed95adfba3705276ab47c",
-    sha1_src = "33aa3172c5352ff975cf4b781b6f86e672377b96",
+    sha1 = "9b647240522ab67c003de9b6702ca81ac0c15efc",
+    sha1_src = "4c2e816b8fa6c525c1cb235c840dfb6b0a320db4",
 )
 
 maven_jar(
