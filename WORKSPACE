@@ -1,4 +1,17 @@
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
+
+# Version check
+
+http_archive(
+    name = "bazel_skylib",
+    sha256 = "ca4e3b8e4da9266c3a9101c8f4704fe2e20eb5625b2a6a7d2d7d45e3dd4efffd",
+    strip_prefix = "bazel-skylib-0.5.0",
+    urls = ["https://github.com/bazelbuild/bazel-skylib/archive/0.5.0.zip"],
+)
+
+load("@bazel_skylib//:lib.bzl", "versions")
+
+versions.check(minimum_bazel_version = "0.18.0")
 
 # Build dependencies
 
