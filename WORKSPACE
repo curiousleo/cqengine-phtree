@@ -31,9 +31,9 @@ maven_jar(
 
 maven_jar(
     name = "ch_ethz_globis_phtree",
-    artifact = "ch.ethz.globis.phtree:phtree:2.0.1",
-    sha1 = "f7d9e115656309a5b9d6276cac00fa6751d0464b",
-    sha1_src = "a7686af548d4f9291f3e9e842f292b822aa2522e",
+    artifact = "ch.ethz.globis.phtree:phtree:2.3.0",
+    sha1 = "75ae60c0acf4ed9bb89549c6d6a19beab140aec8",
+    sha1_src = "164b60b8c1f87d5272273d20ba4de12ca63af756",
 )
 
 # Test dependencies
