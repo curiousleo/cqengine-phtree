@@ -321,4 +321,9 @@ public final class PhTreeSolidIndex<O, A extends Rectangle> extends AbstractAttr
   public void init(ObjectStore<O> objectStore, QueryOptions queryOptions) {
     addAll(ObjectSet.fromObjectStore(objectStore, queryOptions), queryOptions);
   }
+
+  @Override
+  public void destroy(QueryOptions queryOptions) {
+    // No-op.
+  }
 }

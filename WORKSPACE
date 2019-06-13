@@ -17,9 +17,9 @@ versions.check(minimum_bazel_version = "0.18.0")
 
 maven_jar(
     name = "com_googlecode_cqengine",
-    artifact = "com.googlecode.cqengine:cqengine:3.0.0",
-    sha1 = "bb73d6730d133596e43ed95adfba3705276ab47c",
-    sha1_src = "33aa3172c5352ff975cf4b781b6f86e672377b96",
+    artifact = "com.googlecode.cqengine:cqengine:3.4.0",
+    sha1 = "87a59881619b036027e2765828de52f0231fdda7",
+    sha1_src = "0efea1dc054fcaa66658fa57d62a12a97a6c4cc0",
 )
 
 maven_jar(

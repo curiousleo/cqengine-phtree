@@ -313,4 +313,9 @@ public final class PhTreeIndex<O, A extends Point> extends AbstractAttributeInde
   public void init(ObjectStore<O> objectStore, QueryOptions queryOptions) {
     addAll(ObjectSet.fromObjectStore(objectStore, queryOptions), queryOptions);
   }
+
+  @Override
+  public void destroy(QueryOptions queryOptions) {
+    // No-op.
+  }
 }
