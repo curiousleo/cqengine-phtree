@@ -17,9 +17,9 @@ versions.check(minimum_bazel_version = "0.18.0")
 
 maven_jar(
     name = "com_googlecode_cqengine",
-    artifact = "com.googlecode.cqengine:cqengine:3.0.0",
-    sha1 = "bb73d6730d133596e43ed95adfba3705276ab47c",
-    sha1_src = "33aa3172c5352ff975cf4b781b6f86e672377b96",
+    artifact = "com.googlecode.cqengine:cqengine:3.4.0",
+    sha1 = "87a59881619b036027e2765828de52f0231fdda7",
+    sha1_src = "0efea1dc054fcaa66658fa57d62a12a97a6c4cc0",
 )
 
 maven_jar(
@@ -31,9 +31,9 @@ maven_jar(
 
 maven_jar(
     name = "ch_ethz_globis_phtree",
-    artifact = "ch.ethz.globis.phtree:phtree:2.0.1",
-    sha1 = "f7d9e115656309a5b9d6276cac00fa6751d0464b",
-    sha1_src = "a7686af548d4f9291f3e9e842f292b822aa2522e",
+    artifact = "ch.ethz.globis.phtree:phtree:2.3.0",
+    sha1 = "75ae60c0acf4ed9bb89549c6d6a19beab140aec8",
+    sha1_src = "164b60b8c1f87d5272273d20ba4de12ca63af756",
 )
 
 # Test dependencies
@@ -47,9 +47,9 @@ maven_jar(
 
 maven_jar(
     name = "com_google_truth",
-    artifact = "com.google.truth:truth:0.42",
-    sha1 = "b5768f644b114e6cf5c3962c2ebcb072f788dcbb",
-    sha1_src = "7e72d98ff8a87f4f62f54850ff1387112eb8b917",
+    artifact = "com.google.truth:truth:0.45",
+    sha1 = "e16683346f6a6887b1f140a2984e60c73c66c40a",
+    sha1_src = "59827b0d5d93ceedd22b025172a2c672b4565a2c",
 )
 
 maven_jar(
@@ -61,9 +61,9 @@ maven_jar(
 
 maven_jar(
     name = "com_google_guava",
-    artifact = "com.google.guava:guava:26.0-jre",
-    sha1 = "6a806eff209f36f635f943e16d97491f00f6bfab",
-    sha1_src = "2e35b51c759ae1a6edbb967b65c525105536d382",
+    artifact = "com.google.guava:guava:27.1-jre",
+    sha1 = "e47b59c893079b87743cdcfb6f17ca95c08c592c",
+    sha1_src = "5dfa313690a903560bf27478345780a607bf1e9b",
 )
 
 # Benchmark dependencies
