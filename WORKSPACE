@@ -61,9 +61,9 @@ maven_jar(
 
 maven_jar(
     name = "com_google_guava",
-    artifact = "com.google.guava:guava:26.0-jre",
-    sha1 = "6a806eff209f36f635f943e16d97491f00f6bfab",
-    sha1_src = "2e35b51c759ae1a6edbb967b65c525105536d382",
+    artifact = "com.google.guava:guava:27.1-jre",
+    sha1 = "e47b59c893079b87743cdcfb6f17ca95c08c592c",
+    sha1_src = "5dfa313690a903560bf27478345780a607bf1e9b",
 )
 
 # Benchmark dependencies
