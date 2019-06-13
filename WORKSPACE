@@ -47,9 +47,9 @@ maven_jar(
 
 maven_jar(
     name = "com_google_truth",
-    artifact = "com.google.truth:truth:0.42",
-    sha1 = "b5768f644b114e6cf5c3962c2ebcb072f788dcbb",
-    sha1_src = "7e72d98ff8a87f4f62f54850ff1387112eb8b917",
+    artifact = "com.google.truth:truth:0.45",
+    sha1 = "e16683346f6a6887b1f140a2984e60c73c66c40a",
+    sha1_src = "59827b0d5d93ceedd22b025172a2c672b4565a2c",
 )
 
 maven_jar(
