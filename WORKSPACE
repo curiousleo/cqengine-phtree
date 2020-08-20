@@ -43,10 +43,8 @@ maven_install(
         "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
         "ch.ethz.globis.phtree:phtree:2.3.0",
         # Test dependencies
-        "junit:junit:4.12",
-        "com.google.truth:truth:0.45",
-        "org.hamcrest:hamcrest-core:1.3",
-        "com.google.guava:guava:27.1-jre",
+        "junit:junit:4.13",
+        "com.google.truth:truth:1.0.1",
         # Benchmark dependencies
         "org.openjdk.jmh:jmh-core:%s" % JMH_VERSION,
         "org.openjdk.jmh:jmh-generator-annprocess:%s" % JMH_VERSION,
