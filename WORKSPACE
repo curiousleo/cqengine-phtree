@@ -34,7 +34,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 # Maven dependencies
 
-JMH_VERSION = "1.21"
+JMH_VERSION = "1.25"
 
 maven_install(
     artifacts = [
@@ -43,10 +43,8 @@ maven_install(
         "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
         "ch.ethz.globis.phtree:phtree:2.3.0",
         # Test dependencies
-        "junit:junit:4.12",
-        "com.google.truth:truth:0.45",
-        "org.hamcrest:hamcrest-core:1.3",
-        "com.google.guava:guava:27.1-jre",
+        "junit:junit:4.13",
+        "com.google.truth:truth:1.0.1",
         # Benchmark dependencies
         "org.openjdk.jmh:jmh-core:%s" % JMH_VERSION,
         "org.openjdk.jmh:jmh-generator-annprocess:%s" % JMH_VERSION,
@@ -71,20 +69,20 @@ pinned_maven_install()
 http_file(
     name = "buildifier_darwin",
     executable = True,
-    sha256 = "66a569152bf59a527000941758a25f1dd03d6e26302d7982fd8aee25e552a10c",
-    urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier.osx"],
+    sha256 = "3c30fcddfea8b515fff75127788c16dca5d901873ec4cf2102225cccbffc1702",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier.mac"],
 )
 
 http_file(
     name = "buildifier_linux",
     executable = True,
-    sha256 = "1cf35c463944003ceb3c3716d7fc489d3d70625e34a8127dfd8b272afad7e0fd",
-    urls = ["https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier"],
+    sha256 = "5d47f5f452bace65686448180ff63b4a6aaa0fb0ce0fe69976888fa4d8606940",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier"],
 )
 
 http_file(
     name = "google_java_format_jar",
     downloaded_file_path = "google-java-format.jar",
-    sha256 = "73faf7c9b95bffd72933fa24f23760a6b1d18499151cb39a81cda591ceb7a5f4",
-    urls = ["https://github.com/google/google-java-format/releases/download/google-java-format-1.6/google-java-format-1.6-all-deps.jar"],
+    sha256 = "29c864e58db8784028f4871fa4ef1e9cfcc0e5b9939ead09c7f1fc59e64737be",
+    urls = ["https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar"],
 )
