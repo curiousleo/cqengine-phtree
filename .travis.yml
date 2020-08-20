@@ -1,5 +1,5 @@
 dist: bionic
-sudo: required
+language: java
 jdk:
 - openjdk11
 before_install:
