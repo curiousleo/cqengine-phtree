@@ -85,6 +85,6 @@ http_file(
 http_file(
     name = "google_java_format_jar",
     downloaded_file_path = "google-java-format.jar",
-    sha256 = "73faf7c9b95bffd72933fa24f23760a6b1d18499151cb39a81cda591ceb7a5f4",
-    urls = ["https://github.com/google/google-java-format/releases/download/google-java-format-1.6/google-java-format-1.6-all-deps.jar"],
+    sha256 = "29c864e58db8784028f4871fa4ef1e9cfcc0e5b9939ead09c7f1fc59e64737be",
+    urls = ["https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar"],
 )
