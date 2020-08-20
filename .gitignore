@@ -1,3 +1,4 @@
+/.bazelrc.private
 /.ijwb
 /src/bench/bench.iml
 /src/bench/target

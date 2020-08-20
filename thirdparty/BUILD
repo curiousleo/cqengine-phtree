@@ -2,28 +2,28 @@ package(default_visibility = ["//visibility:public"])
 
 java_library(
     name = "phtree",
-    exports = ["@ch_ethz_globis_phtree//jar"],
+    exports = ["@maven//:ch_ethz_globis_phtree_phtree"],
     runtime_deps = [":concurrent_trees"],
 )
 
 java_library(
     name = "cqengine",
-    exports = ["@com_googlecode_cqengine//jar"],
+    exports = ["@maven//:com_googlecode_cqengine_cqengine"],
 )
 
 java_library(
     name = "concurrent_trees",
-    exports = ["@com_googlecode_concurrent_trees//jar"],
+    exports = ["@maven//:com_googlecode_concurrent_trees_concurrent_trees"],
 )
 
 java_library(
     name = "testing",
     testonly = True,
     exports = [
-        "@com_google_guava//jar",
-        "@com_google_truth//jar",
-        "@junit_junit4//jar",
-        "@org_hamcrest_core//jar",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_truth_truth",
+        "@maven//:junit_junit",
+        "@maven//:org_hamcrest_hamcrest_core",
     ],
 )
 
@@ -55,10 +55,10 @@ java_plugin(
     processor_class = "org.openjdk.jmh.generators.BenchmarkProcessor",
     visibility = ["//visibility:private"],
     deps = [
-        "@org_openjdk_jmh_core//jar",
-        "@org_openjdk_jmh_generator_annprocess//jar",
-        "@org_openjdk_jmh_generator_bytecode//jar",
-        "@org_openjdk_jmh_generator_reflection//jar",
+        "@maven//:org_openjdk_jmh_jmh_core",
+        "@maven//:org_openjdk_jmh_jmh_generator_annprocess",
+        "@maven//:org_openjdk_jmh_jmh_generator_bytecode",
+        "@maven//:org_openjdk_jmh_jmh_generator_reflection",
     ],
 )
 
@@ -67,9 +67,9 @@ java_library(
     testonly = True,
     exported_plugins = [":jmh_plugin"],
     exports = [
-        "@org_openjdk_jmh_core//jar",
+        "@maven//:org_openjdk_jmh_jmh_core",
     ],
     runtime_deps = [
-        "@org_apache_commons_math3//jar",
+        "@maven//:org_apache_commons_commons_math3",
     ],
 )

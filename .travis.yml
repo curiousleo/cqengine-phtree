@@ -1,10 +1,10 @@
-dist: trusty
-sudo: required
+dist: bionic
+language: java
 jdk:
-- openjdk8
+- openjdk11
 before_install:
-- wget 'https://github.com/bazelbuild/bazel/releases/download/0.18.0/bazel_0.18.0-linux-x86_64.deb'
-- sudo dpkg -i bazel_0.18.0-linux-x86_64.deb
+- wget 'https://github.com/bazelbuild/bazel/releases/download/3.4.1/bazel_3.4.1-linux-x86_64.deb'
+- sudo dpkg -i bazel_3.4.1-linux-x86_64.deb
 script:
 - bash tools/check-bazel.sh
 - bash tools/check-java.sh
