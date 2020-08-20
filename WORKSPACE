@@ -34,7 +34,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 # Maven dependencies
 
-JMH_VERSION = "1.21"
+JMH_VERSION = "1.25"
 
 maven_install(
     artifacts = [
