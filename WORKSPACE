@@ -41,7 +41,7 @@ maven_install(
         # Project dependencies
         "com.googlecode.cqengine:cqengine:3.5.0",
         "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
-        "ch.ethz.globis.phtree:phtree:2.3.0",
+        "ch.ethz.globis.phtree:phtree:2.5.0",
         # Test dependencies
         "junit:junit:4.13",
         "com.google.truth:truth:1.0.1",
