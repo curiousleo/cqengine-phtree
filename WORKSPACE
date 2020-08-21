@@ -39,7 +39,7 @@ JMH_VERSION = "1.25"
 maven_install(
     artifacts = [
         # Project dependencies
-        "com.googlecode.cqengine:cqengine:3.4.0",
+        "com.googlecode.cqengine:cqengine:3.5.0",
         "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
         "ch.ethz.globis.phtree:phtree:2.3.0",
         # Test dependencies
