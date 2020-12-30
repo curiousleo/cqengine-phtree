@@ -34,7 +34,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 # Maven dependencies
 
-JMH_VERSION = "1.25"
+JMH_VERSION = "1.27"
 
 maven_install(
     artifacts = [
@@ -43,8 +43,8 @@ maven_install(
         "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
         "ch.ethz.globis.phtree:phtree:2.5.0",
         # Test dependencies
-        "junit:junit:4.13",
-        "com.google.truth:truth:1.0.1",
+        "junit:junit:4.13.1",
+        "com.google.truth:truth:1.1",
         # Benchmark dependencies
         "org.openjdk.jmh:jmh-core:%s" % JMH_VERSION,
         "org.openjdk.jmh:jmh-generator-annprocess:%s" % JMH_VERSION,
