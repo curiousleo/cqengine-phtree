@@ -12,8 +12,8 @@ jobs:
 
     - name: Check formatting
       run: |
-        tools/check-bazel.sh
-        tools/check-java.sh
+        ./tools/check-bazel
+        ./tools/check-java
 
     - run: bazel build //...
 
