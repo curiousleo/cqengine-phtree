@@ -15,6 +15,7 @@ jobs:
 
     - name: Check formatting
       run: |
+        ls tools/
         bash tools/check-bazel
         bash tools/check-java
 
