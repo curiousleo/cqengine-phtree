@@ -19,9 +19,9 @@ versions.check(minimum_bazel_version = "2.0.0")
 
 # Maven rule
 
-RULES_JVM_EXTERNAL_TAG = "4.0"
+RULES_JVM_EXTERNAL_TAG = "3.3"
 
-RULES_JVM_EXTERNAL_SHA = "31701ad93dbfe544d597dbe62c9a1fdd76d81d8a9150c2bf1ecf928ecdf97169"
+RULES_JVM_EXTERNAL_SHA = "d85951a92c0908c80bd8551002d66cb23c3434409c814179c0ff026b53544dab"
 
 http_archive(
     name = "rules_jvm_external",
@@ -34,17 +34,17 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 # Maven dependencies
 
-JMH_VERSION = "1.32"
+JMH_VERSION = "1.27"
 
 maven_install(
     artifacts = [
         # Project dependencies
-        "com.googlecode.cqengine:cqengine:3.6.0",
+        "com.googlecode.cqengine:cqengine:3.5.0",
         "com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
         "ch.ethz.globis.phtree:phtree:2.5.0",
         # Test dependencies
-        "junit:junit:4.13.2",
-        "com.google.truth:truth:1.1.3",
+        "junit:junit:4.13.1",
+        "com.google.truth:truth:1.1",
         # Benchmark dependencies
         "org.openjdk.jmh:jmh-core:%s" % JMH_VERSION,
         "org.openjdk.jmh:jmh-generator-annprocess:%s" % JMH_VERSION,
