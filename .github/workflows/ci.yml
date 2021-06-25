@@ -1,0 +1,20 @@
+name: CI
+on: [push]
+jobs:
+  Build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Install Bazel
+      run: |
+        wget 'https://github.com/bazelbuild/bazel/releases/download/3.4.1/bazel_3.4.1-linux-x86_64.deb'
+        sudo dpkg -i bazel_3.4.1-linux-x86_64.deb
+
+    - name: Check formatting
+      run: |
+        tools/check-bazel.sh
+        tools/check-java.sh
+
+    - run: bazel build //...
+
+    - run: bazel test //...
