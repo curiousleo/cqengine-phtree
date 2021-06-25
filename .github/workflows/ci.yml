@@ -13,11 +13,13 @@ jobs:
         curl -sSL -o "${BAZEL_DEB}" "https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/${BAZEL_DEB}"
         sudo dpkg -i "${BAZEL_DEB}"
 
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Check formatting
       run: |
-        ls tools/
-        bash tools/check-bazel
-        bash tools/check-java
+        ./tools/check-bazel
+        ./tools/check-java
 
     - run: bazel build //...
 
