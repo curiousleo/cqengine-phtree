@@ -1,6 +1,6 @@
 # cqengine-phtree
 
-[![Build Status](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/curiousleo/cqengine-phtree/actions?query=branch%3Amaster)
+[![Build Status](https://github.com/curiousleo/cqengine-phtree/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/curiousleo/cqengine-phtree/actions?query=branch%3Amaster)
 
 
 [PhTree](https://github.com/tzaeschke/phtree) indices for [CQEngine](https://github.com/npgall/cqengine).
