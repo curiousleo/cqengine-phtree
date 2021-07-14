@@ -21,6 +21,4 @@ jobs:
         ./tools/check-bazel
         ./tools/check-java
 
-    - run: bazel build //...
-
     - run: bazel test //...
