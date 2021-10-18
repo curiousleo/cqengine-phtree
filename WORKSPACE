@@ -2,9 +2,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file"
 
 # Version check
 
-BAZEL_SKYLIB_EXTERNAL_TAG = "1.0.2"
+BAZEL_SKYLIB_EXTERNAL_TAG = "1.1.1"
 
-BAZEL_SKYLIB_EXTERNAL_SHA = "64ad2728ccdd2044216e4cec7815918b7bb3bb28c95b7e9d951f9d4eccb07625"
+BAZEL_SKYLIB_EXTERNAL_SHA = "fc64d71583f383157e3e5317d24e789f942bc83c76fde7e5981cadc097a3c3cc"
 
 http_archive(
     name = "bazel_skylib",
