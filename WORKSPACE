@@ -66,18 +66,20 @@ pinned_maven_install()
 
 # Formatting
 
+BUILDIFIER_VERSION = "4.2.2"
+
 http_file(
     name = "buildifier_darwin",
     executable = True,
-    sha256 = "3c30fcddfea8b515fff75127788c16dca5d901873ec4cf2102225cccbffc1702",
-    urls = ["https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier.mac"],
+    sha256 = "105353d741d7dd9788a7c886591e3d3f41520d4eec624a36410b2b7456ef11c6",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/%s/buildifier-darwin-amd64" % BUILDIFIER_VERSION],
 )
 
 http_file(
     name = "buildifier_linux",
     executable = True,
-    sha256 = "5d47f5f452bace65686448180ff63b4a6aaa0fb0ce0fe69976888fa4d8606940",
-    urls = ["https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier"],
+    sha256 = "3f0e450cd852dbfd89aa2761d85f9fbeb6f0faccfc5d4fbe48952cfe0712922a",
+    urls = ["https://github.com/bazelbuild/buildtools/releases/download/%s/buildifier-linux-amd64" % BUILDIFIER_VERSION],
 )
 
 http_file(
